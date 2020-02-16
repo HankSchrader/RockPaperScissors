@@ -14,14 +14,24 @@ struct ContentView: View {
     @State private var usrShouldWin = Bool.random()
     @State private var userSelection = ""
     var body: some View {
-        Button(action:
-            {self.btnTapped()}) {
-                Text("Cpu chose: \(rps[self.cpuCurrentChoice])")
+        VStack{
+            HStack {
+                ForEach(0..<rps.count) { number in
+                        Button(action:
+                            {self.btnTapped()}) {
+                                Text("\(self.rps[number])")
+                        }
+                    }.foregroundColor(.red).padding()
+                Spacer()
+            }
+            HStack {
+                 Text("The CPU Choice: \(rps[cpuCurrentChoice])")
+            }
         }
     }
-    
     func btnTapped() {
         cpuCurrentChoice = Int.random(in: 0..<rps.count)
+        
     }
 
 }
