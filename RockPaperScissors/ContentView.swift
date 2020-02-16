@@ -9,9 +9,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var rps = ["rock", "paper", "scissors"]
+    @State private var cpuCurrentChoice = 0
+    @State private var usrShouldWin = Bool.random()
+    @State private var userSelection = ""
     var body: some View {
-        Text("Hello, World!")
+        Button(action:
+            {self.btnTapped()}) {
+                Text("Cpu chose: \(rps[self.cpuCurrentChoice])")
+        }
     }
+    
+    func btnTapped() {
+        cpuCurrentChoice = Int.random(in: 0..<rps.count)
+    }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
